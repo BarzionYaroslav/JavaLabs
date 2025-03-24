@@ -14,10 +14,6 @@ public class LabworkApplication {
 		BakedBean bean = context.getBean("Person", BakedBean.class);
 		SpringApplication.run(LabworkApplication.class, args);
 		System.out.println(bean);
-
-		WeaponShower shower = context.getBean("weaponShowerBean", WeaponShower.class);
-		shower.show();
-		context.close();
 	}
 
 }
