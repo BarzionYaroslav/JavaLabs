@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Gun Form</title>
+</head>
+<body>
+<h1>Gun</h1>
+<h2>The Gun Damage is calculated as (Damage*Bullets*Aim)/Range</h2>
+<h2>During Perfect Shot Range is ignored</h2>
+<form th:method="POST" th:action="@{/weapons/gun}" th:object="${gun}">
+    <label for="name">Enter Gun Name:</label><br>
+    <input type="text" id="name" required th:field="*{name}">
+    <br/>
+    <label for="dmg">Gun Base Damage:</label><br>
+    <input type="number" id="dmg" required min="0" step="0.01" th:field="*{dmg}">
+    <br/>
+    <label for="bullets">Gun Bullet Amount:</label><br>
+    <input type="number" id="bullets" required min="0" step="1" th:field="*{bullets}">
+    <br/>
+    <label for="aim">Gun Aim:</label><br>
+    <input type="number" id="aim" required min="0" step="0.01" max="1" th:field="*{aim}">
+    <br/>
+    <label for="range">Gun Range:</label><br>
+    <input type="number" id="range" required min="0" step="0.1" th:field="*{range}">
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

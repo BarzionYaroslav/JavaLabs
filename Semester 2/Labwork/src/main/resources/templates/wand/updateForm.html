@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Wand Form</title>
+</head>
+<body>
+<h1>Wand</h1>
+<form th:method="patch" th:action="@{'/weapons/update/wand/' + ${wand.getName()}}"th:object="${wand}">
+    <input type="hidden" name="type" value="wand">
+    <label for="name">Enter Wand Name:</label><br>
+    <input type="text" id="name" required th:field="*{name}" th:value="${wand.getName()}">
+    <br/>
+    <label for="dmg">Wand Base Damage:</label><br>
+    <input type="number" id="dmg" required min="0" step="0.01" th:field="*{dmg}" th:value="${wand.getDmg()}">
+    <br/>
+    <label for="deathelm">Wand Death Element:</label><br>
+    <input type="number" id="deathelm" required min="0" step="0.01" th:field="*{deathelm}" th:value="${wand.getDeathelm()}">
+    <br/>
+    <label for="heal">Wand Base Healing:</label><br>
+    <input type="number" id="heal" required min="0" step="0.01" th:field="*{heal}" th:value="${wand.getHeal()}">
+    <br/>
+    <label for="lifeelm">Wand Life Element:</label><br>
+    <input type="number" id="lifeelm" required min="0" step="0.1" th:field="*{lifeelm}" th:value="${wand.getLifeelm()}">
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,30 +1,58 @@
 package com.example.Labwork;
 
-public class Gun implements Weapon{
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+public class Gun extends Weapon{
     private int bullets;
+    private float range;
+    private float aim;
 
-    public Gun(int bullet){
-        this.bullets=bullet;
+    public Gun(){
+        special = "Perfect Shot";
+    };
+
+    public Gun(String name, int bullets, float dmg, float range, float aim) {
+        this.name = name;
+        this.bullets = bullets;
+        this.dmg = dmg;
+        this.range = range;
+        this.aim = aim;
+        special = "Perfect Shot";
     }
 
-    @Override
-    public void doDamage() {
-        if (bullets>0) {
-            System.out.println("Pow! Damaged!");
-            bullets--;
-        }
-        else
-            System.out.println("Oh shoot! I mean, no shoot, cuz yer outta ammo!");
-    }
-    @Override
-    public void check() {
-        if (bullets>0)
-            System.out.println("Gun is alright! You got " + bullets + " shots left");
-        else
-            System.out.println("Gun isn't alright. No bullets");
-    }
     public int getBullets(){
         return bullets;
+    }
+
+    public float getAim() {
+        return aim;
+    }
+
+
+    public float getRange() {
+        return range;
+    }
+
+    public void setAim(float aim) {
+        this.aim = aim;
+    }
+
+    public void setRange(float range) {
+        this.range = range;
+    }
+
+    @Override
+    public float getDmg(){
+        if (range==0)
+            return (dmg * (float)bullets * aim);
+        else
+            return (dmg * (float)bullets * aim)/range;
+    }
+
+    @Override
+    public float doSpecial(){
+        return (dmg * (float)bullets*aim);
     }
 
     public void setBullets(int bullet){

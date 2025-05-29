@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Wand Form</title>
+</head>
+<body>
+<h1>Wand</h1>
+<h2>The Wand Damage is calculated as (Base Damage*Death Element)/Life Element</h2>
+<h2>The Wand Healing is calculated as (Base Healing*Life Element)/Death Element</h2>
+<form th:method="POST" th:action="@{/weapons/wand}" th:object="${wand}">
+    <label for="name">Enter Wand Name:</label><br>
+    <input type="text" id="name" required th:field="*{name}">
+    <br/>
+    <label for="dmg">Wand Base Damage:</label><br>
+    <input type="number" id="dmg" required min="0" step="0.01" th:field="*{dmg}">
+    <br/>
+    <label for="deathelm">Wand Death Element:</label><br>
+    <input type="number" id="deathelm" required min="0" step="0.01" th:field="*{deathelm}">
+    <br/>
+    <label for="heal">Wand Base Healing:</label><br>
+    <input type="number" id="heal" required min="0" step="0.01" th:field="*{heal}">
+    <br/>
+    <label for="lifeelm">Wand Life Element:</label><br>
+    <input type="number" id="lifeelm" required min="0" step="0.01" th:field="*{lifeelm}">
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Sword Form</title>
+</head>
+<body>
+<h1>Sword</h1>
+<form th:method="patch" th:action="@{'/weapons/update/sword/' + ${sword.getName()}}"th:object="${sword}">
+    <input type="hidden" name="type" value="sword">
+    <label for="name">Enter Sword Name:</label><br>
+    <input type="text" id="name" required th:field="*{name}" th:value="${sword.getName()}">
+    <br/>
+    <label for="dmg">Sword Base Damage:</label><br>
+    <input type="number" id="dmg" required min="0" step="0.01"  th:field="*{dmg}" th:value="${sword.getDmg()}">
+    <br/>
+    <label for="sharpness">Sword Sharpness:</label><br>
+    <input type="number" id="sharpness" required min="0" step="0.01"  th:field="*{sharpness}" th:value="${sword.getSharpness()}">
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

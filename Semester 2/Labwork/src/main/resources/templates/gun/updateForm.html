@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Gun Form</title>
+</head>
+<body>
+<h1>Gun</h1>
+<form th:method="patch" th:action="@{'/weapons/update/gun/' + ${gun.getName()}}"th:object="${gun}">
+    <input type="hidden" name="type" value="gun">
+    <label for="name">Enter Gun Name:</label><br>
+    <input type="text" id="name" required th:field="*{name}" th:value="${gun.getName()}">
+    <br/>
+    <label for="dmg">Gun Base Damage:</label><br>
+    <input type="number" id="dmg" required min="0" step="0.01" th:field="*{dmg}" th:value="${gun.getDmg()}">
+    <br/>
+    <label for="bullets">Gun Bullet Amount:</label><br>
+    <input type="number" id="bullets" required min="0" step="1" th:field="*{bullets}" th:value="${gun.getBullets()}">
+    <br/>
+    <label for="aim">Gun Aim:</label><br>
+    <input type="number" id="aim" required min="0" step="0.01" th:field="*{aim}" th:value="${gun.getAim()}">
+    <br/>
+    <label for="range">Gun Range:</label><br>
+    <input type="number" id="range" required min="0" step="0.1" th:field="*{range}" th:value="${gun.getRange()}">
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
